@@ -43,7 +43,7 @@ function mergeAndCount(a, beg, mid, end, buf) {
   return inv;
 }
 
-function countInversion(a) {
+export default function countInversion(a) {
   let len = a.length;
   if (len) {
     let buf = new Array(len);
@@ -52,5 +52,3 @@ function countInversion(a) {
     return 0;
   }
 }
-
-exports.countInversion = countInversion;

@@ -1,6 +1,7 @@
 var fs = require('fs'),
-  assert = require('assert'),
-  countInversion = require('./countinversion').countInversion;
+  assert = require('assert');
+
+import countInversion from './countinversion';
 
 assert(countInversion([1, 3, 5, 2, 4, 6]) === 3);
 assert(countInversion([1, 5, 3, 2, 4]) === 4);
