@@ -1,7 +1,8 @@
 var fs = require('fs'),
-  assert = require('assert');
+  assert = require('assert'),
+  aa1 = require('../dist/aa1.min');
 
-import countInversion from './countinversion';
+let countInversion = aa1.countInversion;
 
 assert(countInversion([1, 3, 5, 2, 4, 6]) === 3);
 assert(countInversion([1, 5, 3, 2, 4]) === 4);
