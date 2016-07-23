@@ -1,7 +1,7 @@
 function sortAndCount(a, beg, end, buf) {
   if (end - beg <= 1) {
     return 0;
-  } else if (end - beg == 2) {
+  } else if (end - beg === 2) {
     if (a[beg] <= a[beg + 1]) {
       return 0;
     } else {
