@@ -1,7 +1,8 @@
 import countQuickSortCmp from '../src/countquicksortcmp';
 
 describe('countQuickSortCmp', () => {
-  let arr10 = [3, 9, 8, 4, 6, 10, 2, 5, 7, 1],
+  let arr5 = [5, 4, 3, 2, 1],
+    arr10 = [3, 9, 8, 4, 6, 10, 2, 5, 7, 1],
     arr100 = [57, 97, 17, 31, 54, 98, 87, 27, 89, 81, 18, 70, 3, 34, 63, 100, 46, 30, 99, 10, 33, 65, 96, 38,
       48, 80, 95, 6, 16, 19, 56, 61, 1, 47, 12, 73, 49, 41, 37, 40, 59, 67, 93, 26, 75, 44, 58, 66, 8, 55, 94,
       74, 83, 7, 15, 86, 42, 50, 5, 22, 90, 13, 69, 53, 43, 24, 92, 51, 23, 39, 78, 85, 4, 25, 52, 36, 60, 68,
@@ -58,18 +59,21 @@ describe('countQuickSortCmp', () => {
     ];
 
   it('should work correctly in first case', () => {
+    expect(countQuickSortCmp(arr5, 'first')).toBe(10);
     expect(countQuickSortCmp(arr10, 'first')).toBe(25);
     expect(countQuickSortCmp(arr100, 'first')).toBe(615);
     expect(countQuickSortCmp(arr1000, 'first')).toBe(10297);
   });
 
   it('should work correctly in last case', () => {
+    expect(countQuickSortCmp(arr5, 'last')).toBe(10);
     expect(countQuickSortCmp(arr10, 'last')).toBe(29);
     expect(countQuickSortCmp(arr100, 'last')).toBe(587);
     expect(countQuickSortCmp(arr1000, 'last')).toBe(10184);
   });
 
   it('should work correctly in median case', () => {
+    expect(countQuickSortCmp(arr5, 'median')).toBe(6);
     expect(countQuickSortCmp(arr10, 'median')).toBe(21);
     expect(countQuickSortCmp(arr100, 'median')).toBe(518);
     expect(countQuickSortCmp(arr1000, 'median')).toBe(8921);
