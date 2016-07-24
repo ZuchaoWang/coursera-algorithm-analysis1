@@ -1,5 +1,7 @@
 import countInversion from './countinversion';
+import countQuickSortCmp from './countquicksortcmp';
 
 export default {
-  countInversion: countInversion
+  countInversion: countInversion,
+  countQuickSortCmp: countQuickSortCmp
 };
