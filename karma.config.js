@@ -29,7 +29,6 @@ module.exports = function(config) {
     },
 
     webpack: {
-      cache: true,
       devtool: 'inline-source-map',
       module: {
         loaders: [{
@@ -38,14 +37,11 @@ module.exports = function(config) {
             path.resolve(__dirname, 'src'),
             path.resolve(__dirname, 'tests')
           ],
-          loader: 'babel',
-          query: {
-            cacheDirectory: true
-          }
+          loader: 'babel'
         }]
       },
       resolve: {
-        extensions: ['', '.js']
+        extensions: ['', '.js', '.js.map']
       }
     },
 

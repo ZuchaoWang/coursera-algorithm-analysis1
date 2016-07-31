@@ -1,7 +1,7 @@
 import countMinCut from '../src/countmincut';
 
 describe('countMinCut', () => {
-  let g1 = [
+  let gAl1 = [
       [1, 2, 3, 6],
       [0, 2, 3],
       [0, 1, 3],
@@ -11,7 +11,7 @@ describe('countMinCut', () => {
       [0, 4, 5, 7],
       [4, 5, 6]
     ],
-    g2 = [
+    gAl2 = [
       [3, 1, 6, 2],
       [3, 0, 2],
       [0, 1, 3],
@@ -21,7 +21,7 @@ describe('countMinCut', () => {
       [5, 7, 4, 0],
       [6, 5, 4]
     ],
-    g3 = [
+    gAl3 = [
       [1, 2, 3],
       [0, 2, 3],
       [0, 1, 3],
@@ -31,7 +31,7 @@ describe('countMinCut', () => {
       [4, 5, 7],
       [4, 5, 6]
     ],
-    g4 = [
+    gAl4 = [
       [2, 3, 1],
       [0, 3, 2],
       [0, 1, 3],
@@ -41,7 +41,7 @@ describe('countMinCut', () => {
       [4, 7, 5],
       [4, 6, 5]
     ],
-    g5 = [
+    gAl5 = [
       [1, 2, 3, 4],
       [2, 3, 0],
       [3, 0, 1],
@@ -50,17 +50,69 @@ describe('countMinCut', () => {
       [6, 7, 4],
       [7, 4, 5],
       [3, 5, 4, 6]
+    ],
+    gAl6 = [
+      [18, 14, 35, 22, 17, 38],
+      [35, 22, 3, 17, 25, 8],
+      [34, 5, 15, 10],
+      [22, 1, 17, 23],
+      [13, 7, 28, 20],
+      [33, 34, 2, 15],
+      [29, 32, 37, 27],
+      [11, 13, 4, 28, 30],
+      [38, 12, 19, 9, 16, 1],
+      [8, 19, 11, 13, 28],
+      [2, 15, 29, 32, 25],
+      [19, 9, 13, 7],
+      [23, 38, 8, 19],
+      [9, 11, 7, 4],
+      [25, 18, 0, 35],
+      [5, 2, 10, 29, 16, 34, 31],
+      [37, 27, 31, 39, 8, 15],
+      [1, 3, 23, 38, 0],
+      [26, 25, 14, 0],
+      [12, 8, 9, 11],
+      [4, 28, 24, 36],
+      [31, 39, 33, 34],
+      [0, 35, 1, 3],
+      [3, 17, 38, 12],
+      [28, 20, 36, 30],
+      [30, 26, 18, 14, 10, 1],
+      [36, 30, 25, 18, 28],
+      [6, 37, 16, 31],
+      [7, 4, 20, 24, 9, 26],
+      [15, 10, 32, 6, 36],
+      [24, 36, 26, 25, 7],
+      [27, 16, 39, 21, 15],
+      [10, 29, 6, 37],
+      [39, 21, 34, 5],
+      [21, 33, 5, 2, 15],
+      [14, 0, 22, 1],
+      [20, 24, 30, 26, 29],
+      [32, 6, 27, 16, 39],
+      [17, 23, 12, 8, 0],
+      [16, 31, 21, 33, 37]
     ];
 
-  beforeEach(()=>{
-    spyOn(Math, 'random').and.returnValue(0.0);
+  describe('with no repeat', () => {
+    beforeEach(() => {
+      spyOn(Math, 'random').and.returnValue(0.0);
+    });
+
+    it('should work correctly with fixed random generator', () => {
+      expect(countMinCut(gAl1, 1)).toBe(5);
+      expect(countMinCut(gAl2, 1)).toBe(3);
+    });
   });
 
-  it('should work correctly', () => {
-    expect(countMinCut(g1)).toBe(2);
-    expect(countMinCut(g1)).toBe(2);
-    expect(countMinCut(g1)).toBe(1);
-    expect(countMinCut(g1)).toBe(1);
-    expect(countMinCut(g1)).toBe(2);
+  describe('with nnlogn repeat', () => {
+    xit('should work correctly with fixed random generator', () => {
+      expect(countMinCut(gAl1)).toBe(2);
+      expect(countMinCut(gAl2)).toBe(2);
+      expect(countMinCut(gAl3)).toBe(1);
+      expect(countMinCut(gAl4)).toBe(1);
+      expect(countMinCut(gAl5)).toBe(2);
+      expect(countMinCut(gAl6)).toBe(3);
+    });
   });
 });
