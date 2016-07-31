@@ -71,7 +71,11 @@ function countMinCutOnce(vn, gEl) {
   return eCross;
 }
 
-export default function countMinCut(gAl, repeat = gAl.length * gAl.length * Math.log(gAl.length + 1)) {
+function defaultRepeat(n) {
+  return Math.ceil(n * n * Math.log(n + 1));
+}
+
+export default function countMinCut(gAl, repeat = defaultRepeat(gAl.length)) {
   let vn = gAl.length,
     gEl = adjacencyList2EdgeList(gAl),
     minCount = countMinCutOnce(vn, gEl);
