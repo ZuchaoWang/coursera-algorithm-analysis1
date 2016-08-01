@@ -1,5 +1,5 @@
 function find(ufArr, i) {
-  if (ufArr[i].parent != i)
+  if (ufArr[i].parent !== i)
     ufArr[i].parent = find(ufArr, ufArr[i].parent);
 
   return ufArr[i].parent;
@@ -25,7 +25,7 @@ function adjacencyList2EdgeList(gAl) {
   for (let i = 0; i < gAl.length; i++) {
     for (let j = 0; j < gAl[i].length; j++) {
       if (i < gAl[i][j]) {
-        gEl.push([i, gAl[i][j]])
+        gEl.push([i, gAl[i][j]]);
       }
     }
   }
@@ -54,7 +54,7 @@ function countMinCutOnce(vn, gEl) {
       vLeft--;
     }
 
-    [gEl[eSel], gEl[eLeft-1]] = [gEl[eLeft-1], gEl[eSel]]
+    [gEl[eSel], gEl[eLeft - 1]] = [gEl[eLeft - 1], gEl[eSel]];
     eLeft--;
   }
 

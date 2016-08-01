@@ -11,5 +11,5 @@ let dataFilePath = path.resolve(__dirname, '../data/KargerMinCut.txt'),
   repeat = (data.length > 0) ? Math.ceil(data.length * data.length * Math.log(data.length)) : 1;
 
 console.log(`karger's min cut with ${repeat} repeats`);
-console.log(`this will take a while to run ...`)
+console.log(`this will take a while to run ...`);
 console.log(countMinCut(data, repeat));
