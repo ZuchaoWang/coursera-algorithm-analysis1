@@ -42,16 +42,38 @@ function preprocess(gAl) {
 }
 
 function dfsInPreprocess(context, index) {
-  var i, j;
-  context.visited[index] = true;
-  for (i = 0; i < context.gAl[index].length; i++) {
-    j = context.gAl[index][i];
-    if (context.visited[j] === false) {
-      dfsInPreprocess(context, j);
+  var cur = index,
+    offset = 0,
+    stack = [],
+    deeper,
+    next;
+  context.visited[cur] = true; // pre op
+  for (;;) {
+    deeper = false;
+    while (offset < context.gAl[cur].length) { // recurse
+      next = context.gAl[cur][offset]; // recurse
+      if (context.visited[next] === false) { // recurse
+        context.visited[next] = true; // pre op
+        stack.push([cur, offset + 1]);
+        deeper = true;
+        cur = next;
+        offset = 0;
+        break;
+      } else {
+        offset++;
+      }
+    }
+
+    if (deeper === false) {
+      context.order[context.nFin] = cur; // post op
+      context.nFin++; // post op
+      if (stack.length) {
+        [cur, offset] = stack.pop();
+      } else {
+        break;
+      }
     }
   }
-  context.order[context.nFin] = index;
-  context.nFin++;
 }
 
 function makeLabels(gAl, order) {
@@ -81,12 +103,37 @@ function makeLabels(gAl, order) {
 }
 
 function dfsInMakeLabels(context, index, label) {
-  context.visited[index] = true;
-  context.labels[index] = label;
-  for (var i = 0; i < context.gAl[index].length; i++) {
-    var j = context.gAl[index][i];
-    if (context.visited[j] === false) {
-      dfsInMakeLabels(context, j, label);
+  var cur = index,
+    offset = 0,
+    stack = [],
+    deeper,
+    next;
+
+  context.visited[cur] = true;
+  context.labels[cur] = label;
+  for (;;) {
+    deeper = false;
+    while (offset < context.gAl[cur].length) {
+      next = context.gAl[cur][offset];
+      if (context.visited[next] === false) {
+        stack.push([cur, offset + 1]);
+        deeper = true;
+        context.visited[next] = true;
+        context.labels[next] = label;
+        cur = next;
+        offset = 0;
+        break;
+      } else {
+        offset++;
+      }
+    }
+
+    if (deeper === false) {
+      if (stack.length) {
+        [cur, offset] = stack.pop();
+      } else {
+        break;
+      }
     }
   }
 }
