@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 export default function calcShortestDis(gAl, s) {
   var nn = gAl.length,
     disArray = new Array(nn),

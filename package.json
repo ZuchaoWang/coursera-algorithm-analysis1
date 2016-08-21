@@ -4,14 +4,12 @@
   "description": "coursera algorithm analysis part 1 homework",
   "main": "dist/aa1.js",
   "scripts": {
-    "build": "npm run clean && npm run build:dev && npm run build:prd",
-    "build:dev": "webpack src/index.js dist/aa1.js --config webpack.config.dev.js",
-    "build:prd": "webpack src/index.js dist/aa1.min.js --config webpack.config.prd.js",
+    "build": "npm run clean -s && npm run test -s && webpack --config webpack.config.js",
     "prepublish": "npm run build",
     "clean": "rimraf dist",
     "lint": "eslint src/**/*.js tests/**/*.js hwk/**/*.js || true",
-    "test": "karma start --single-run --browsers PhantomJS --no-auto-watch karma.config.js",
-    "karma": "karma start --browsers Chrome karma.config.js"
+    "test": "npm run lint -s && karma start --single-run --browsers PhantomJS --no-auto-watch karma.config.js",
+    "karma": "npm run lint -s && karma start --browsers Chrome karma.config.js"
   },
   "repository": {
     "type": "git",
@@ -43,5 +41,8 @@
     "phantomjs-prebuilt": "^2.1.7",
     "rimraf": "^2.5.3",
     "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.13.0"
   }
 }

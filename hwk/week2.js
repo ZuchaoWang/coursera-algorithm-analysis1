@@ -1,6 +1,6 @@
 var fs = require('fs'),
   path = require('path');
-var aa1 = require('../dist/aa1.min');
+var aa1 = require('../dist/aa1');
 
 let countQuickSortCmp = aa1.countQuickSortCmp;
 
